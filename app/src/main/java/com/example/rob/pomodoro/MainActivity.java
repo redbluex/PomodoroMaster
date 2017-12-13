@@ -1,5 +1,6 @@
 package com.example.rob.pomodoro;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,9 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import java.sql.Time;
-import java.util.Timer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,9 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
+    public void goToSettings(View v){
+        Intent i = new Intent(MainActivity.this, Settings.class);
+        startActivity(i);
+    }
 
 
 }
