@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     public int seconds = 0;
     String tekstRamka;
     private CountDownTimer yourCountDownTimer;
+    private int kolejka=1;
+    private int maxKolejka = 10;
 
 
     @Override
@@ -33,8 +35,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                yourCountDownTimer = new CountDownTimer((ustawienia.getMainTime()*60000), 1000){
+                yourCountDownTimer = new CountDownTimer((ustawienia.getMainTime()*60000*maxKolejka), 1000){
                     public void onTick(long millisOnFinished){
+                        if(minutes==0 && seconds==0){
+                            if(kolejka%2!=0 && kolejka%4!=0){
+                                minutes = ustawienia.getMainTime();
+
+                            }
+                            if(kolejka%2==0 && kolejka%4!=0){
+                                minutes = ustawienia.getShortBreak();
+
+                            }
+                            if(kolejka%4==0 && kolejka%2!=0){
+                                minutes = ustawienia.getLongBreak();
+                            }
+                            kolejka++;
+                        }
+
                         if(seconds==0){
                             seconds=59;
                             minutes-=1;
@@ -42,7 +59,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                         minuty.setText(String.valueOf(seconds));
                         seconds--;
+
                     }
+
+
 
                     @Override
                     public void onFinish() {
@@ -64,11 +84,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void goToSettings(View v){
         Intent i = new Intent(MainActivity.this, Settings.class);
         startActivity(i);
     }
-
 
 }
