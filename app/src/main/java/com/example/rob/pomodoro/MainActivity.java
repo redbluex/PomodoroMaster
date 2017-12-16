@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     static SettingsKlasa ustawienia = new SettingsKlasa();
-    public int minutes = ustawienia.getMainTime();
+    int minutes=0;
     public int seconds = 0;
     String tekstRamka;
     private CountDownTimer yourCountDownTimer;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                                 minutes = shortfinal;
 
                             }
-                            if(kolejka%4==0 && kolejka%2!=0){
+                            if(kolejka%4==0){
                                 minutes = longfinal;
                             }
                             kolejka++;
