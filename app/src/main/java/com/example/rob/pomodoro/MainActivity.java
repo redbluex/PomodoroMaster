@@ -11,10 +11,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    public int counter = 0;
-    String tekstRamka;
     static SettingsKlasa ustawienia = new SettingsKlasa();
-
+    public int counter = 0;
+    public int minutes = ustawienia.getMainTime();
+    public int seconds = 0;
+    String tekstRamka;
 
 
     @Override
@@ -24,16 +25,22 @@ public class MainActivity extends AppCompatActivity {
 
         Button click = (Button)findViewById(R.id.button);
         final TextView label = (TextView)findViewById(R.id.timeText);
+        final TextView minuty = (TextView)findViewById(R.id.textMinutes);
         tekstRamka = ustawienia.getMainTime()+"";
         label.setText(tekstRamka);
 
         click.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                new CountDownTimer(10000, 1000){
+                new CountDownTimer((ustawienia.getMainTime()*60000), 1000){
                     public void onTick(long millisOnFinished){
-                        label.setText(String.valueOf(Integer.parseInt(tekstRamka)-counter));
-                        counter++;
+                        if(seconds==0){
+                            seconds=59;
+                            minutes-=1;
+                            label.setText(String.valueOf(minutes));
+                        }
+                        minuty.setText(String.valueOf(seconds));
+                        seconds--;
                     }
 
                     @Override
