@@ -17,35 +17,14 @@
         android:layout_marginTop="96dp"
         android:textSize="30dp"/>
 
-    <EditText
-        android:id="@+id/setTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/timeText"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <Button
-        android:id="@+id/buttonAccept"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/setTime"
-        android:layout_toEndOf="@+id/setTime"
-        android:layout_toRightOf="@+id/setTime"
-        android:text="Ok" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonAccept"
-        android:layout_toEndOf="@+id/timeText"
-        android:layout_toRightOf="@+id/timeText"
         android:text="start"
-        />
+        android:layout_below="@+id/timeText"
+        android:layout_alignLeft="@+id/timeText"
+        android:layout_alignStart="@+id/timeText" />
 
     <Button
         android:id="@+id/button2"

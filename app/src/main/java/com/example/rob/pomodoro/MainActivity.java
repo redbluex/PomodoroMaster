@@ -13,25 +13,19 @@ public class MainActivity extends AppCompatActivity {
 
     public int counter = 0;
     String tekstRamka;
+    static SettingsKlasa ustawienia = new SettingsKlasa();
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Button click = (Button)findViewById(R.id.button);
-        Button clickset = (Button)findViewById(R.id.buttonAccept);
         final TextView label = (TextView)findViewById(R.id.timeText);
-
-        clickset.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                EditText editRamka = (EditText)findViewById(R.id.setTime);
-                tekstRamka = editRamka.getText().toString();
-                label.setText(tekstRamka);
-            }
-        });
+        tekstRamka = ustawienia.getMainTime()+"";
+        label.setText(tekstRamka);
 
         click.setOnClickListener(new View.OnClickListener(){
             @Override
