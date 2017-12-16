@@ -28,7 +28,8 @@
         android:text="start"
         android:layout_below="@+id/timeText"
         android:layout_alignLeft="@+id/timeText"
-        android:layout_alignStart="@+id/timeText" />
+        android:layout_alignStart="@+id/timeText"
+        android:onClick="bStart"/>
 
     <Button
         android:id="@+id/button2"
@@ -38,7 +39,8 @@
         android:layout_alignStart="@+id/button"
         android:layout_below="@+id/button"
         android:text="Stop"
-        android:onClick="stopButton"/>
+        android:onClick="bStop"
+        />
 
     <Button
         android:id="@+id/buttonGoToSettings"

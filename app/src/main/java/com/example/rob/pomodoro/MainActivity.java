@@ -6,16 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     static SettingsKlasa ustawienia = new SettingsKlasa();
-    public int counter = 0;
     public int minutes = ustawienia.getMainTime();
     public int seconds = 0;
     String tekstRamka;
+    private CountDownTimer yourCountDownTimer;
 
 
     @Override
@@ -23,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button click = (Button)findViewById(R.id.button);
+        final Button click = (Button)findViewById(R.id.button);
+        final Button click2 = (Button)findViewById(R.id.button2);
         final TextView label = (TextView)findViewById(R.id.timeText);
         final TextView minuty = (TextView)findViewById(R.id.textMinutes);
         tekstRamka = ustawienia.getMainTime()+"";
@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         click.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                new CountDownTimer((ustawienia.getMainTime()*60000), 1000){
+
+                yourCountDownTimer = new CountDownTimer((ustawienia.getMainTime()*60000), 1000){
                     public void onTick(long millisOnFinished){
                         if(seconds==0){
                             seconds=59;
@@ -48,10 +49,21 @@ public class MainActivity extends AppCompatActivity {
                         label.setText("Koniec czasu");
                     }
                 }.start();
+                click.setEnabled(false);
+            }
+
+        });
+
+        click2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                yourCountDownTimer.cancel();
+                click.setEnabled(true);
             }
         });
 
     }
+
 
     public void goToSettings(View v){
         Intent i = new Intent(MainActivity.this, Settings.class);
