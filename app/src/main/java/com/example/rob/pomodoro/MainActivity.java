@@ -1,11 +1,13 @@
 package com.example.rob.pomodoro;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,11 +24,14 @@ public class MainActivity extends AppCompatActivity {
     final int longfinal = ustawienia.getLongBreak();
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final RelativeLayout currentLayout = (RelativeLayout) findViewById(R.id.main_layout);
         final Button click = (Button)findViewById(R.id.button);
         final Button click2 = (Button)findViewById(R.id.button2);
         final TextView label = (TextView)findViewById(R.id.timeText);
@@ -34,23 +39,25 @@ public class MainActivity extends AppCompatActivity {
         tekstRamka = ustawienia.getMainTime()+"";
         label.setText(tekstRamka);
 
+
         click.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
+            public void onClick(final View v){
 
                 yourCountDownTimer = new CountDownTimer((ustawienia.getMainTime()*60000*maxKolejka), 1000){
                     public void onTick(long millisOnFinished){
                         if(minutes==0 && seconds==0){
                             if(kolejka%2!=0 && kolejka%4!=0){
                                 minutes = mainfinal;
-
+                                currentLayout.setBackgroundColor(getResources().getColor(R.color.colorMain));
                             }
                             if(kolejka%2==0 && kolejka%4!=0){
                                 minutes = shortfinal;
-
+                                currentLayout.setBackgroundColor(getResources().getColor(R.color.colorShort));
                             }
                             if(kolejka%4==0){
                                 minutes = longfinal;
+                                currentLayout.setBackgroundColor(getResources().getColor(R.color.colorLong));
                             }
                             kolejka++;
                         }
@@ -91,5 +98,6 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this, Settings.class);
         startActivity(i);
     }
+
 
 }
