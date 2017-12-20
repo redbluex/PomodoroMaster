@@ -15,59 +15,60 @@
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="98dp"
-        android:textSize="30dp"
         android:text="25"
         android:textColor="@color/blackColor"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="121dp"
-        android:layout_marginStart="121dp" />
+        android:textSize="36sp"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_toLeftOf="@+id/textView4"
+        android:layout_toStartOf="@+id/textView4" />
 
     <ImageButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/startpomodorodwa"
+        app:srcCompat="@drawable/startedittrzy"
         android:background="@android:color/transparent"
-        android:layout_below="@+id/timeText"
-        android:layout_toLeftOf="@+id/textView4"
-        android:layout_toStartOf="@+id/textView4" />
+
+
+        android:layout_above="@+id/imageView"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView" />
 
     <ImageButton
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/stoppomodorodwa"
+        app:srcCompat="@drawable/stopedittrzy"
         android:background="@android:color/transparent"
-
-        android:layout_below="@+id/textMinutes"
-        android:layout_toRightOf="@+id/button"
-        android:layout_toEndOf="@+id/button" />
+        android:layout_above="@+id/imageView"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
 
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
-        android:layout_toEndOf="@+id/timeText"
-        android:layout_toRightOf="@+id/timeText"
+
         android:text=":"
         android:textColor="@color/blackColor"
-        android:textSize="30dp"/>
+        android:textSize="36sp"
+        android:layout_alignBaseline="@+id/textMinutes"
+        android:layout_alignBottom="@+id/textMinutes"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/textMinutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
-        android:layout_toEndOf="@+id/textView4"
-        android:layout_toRightOf="@+id/textView4"
+
         android:text="00"
         android:textColor="@color/blackColor"
-        android:textSize="30dp"/>
+        android:textSize="36sp"
+        android:layout_above="@+id/button2"
+        android:layout_toRightOf="@+id/textView4"
+        android:layout_toEndOf="@+id/textView4" />
 
     <ImageButton
         android:id="@+id/imageButton6"
@@ -85,11 +86,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/littlepomidorbig"
-        android:layout_marginRight="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_below="@+id/button2"
-        android:layout_toLeftOf="@+id/imageButton6"
-        android:layout_toStartOf="@+id/imageButton6" />
+        android:layout_above="@+id/imageButton6"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

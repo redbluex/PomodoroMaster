@@ -2,6 +2,7 @@ package com.example.rob.pomodoro;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,11 +33,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         final RelativeLayout currentLayout = (RelativeLayout) findViewById(R.id.main_layout);
         final ImageButton click = (ImageButton)findViewById(R.id.button);
         final ImageButton click2 = (ImageButton)findViewById(R.id.button2);
         final TextView label = (TextView)findViewById(R.id.timeText);
         final TextView minuty = (TextView)findViewById(R.id.textMinutes);
+        TextView colon = (TextView) findViewById(R.id.textView4);
+        setFont(label);
+        setFont(minuty);
+        setFont(colon);
+
         tekstRamka = ustawienia.getMainTime()+"";
         label.setText(tekstRamka);
 
@@ -98,6 +106,11 @@ public class MainActivity extends AppCompatActivity {
     public void goToSettings(View v){
         Intent i = new Intent(MainActivity.this, Settings.class);
         startActivity(i);
+    }
+
+    private void setFont(TextView myTextView){
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Munro.ttf");
+        myTextView.setTypeface(typeface);
     }
 
 
