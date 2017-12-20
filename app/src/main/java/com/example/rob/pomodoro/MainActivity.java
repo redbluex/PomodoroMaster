@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -32,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final RelativeLayout currentLayout = (RelativeLayout) findViewById(R.id.main_layout);
-        final Button click = (Button)findViewById(R.id.button);
-        final Button click2 = (Button)findViewById(R.id.button2);
+        final ImageButton click = (ImageButton)findViewById(R.id.button);
+        final ImageButton click2 = (ImageButton)findViewById(R.id.button2);
         final TextView label = (TextView)findViewById(R.id.timeText);
         final TextView minuty = (TextView)findViewById(R.id.textMinutes);
         tekstRamka = ustawienia.getMainTime()+"";
