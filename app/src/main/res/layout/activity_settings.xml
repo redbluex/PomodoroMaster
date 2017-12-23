@@ -5,55 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.rob.pomodoro.Settings"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorMain"
+    >
 
     <TextView
         android:id="@+id/textMT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Main Time" />
+        android:text="Main Time"
+        android:textSize="18sp"
+        android:textColor="@color/blackColor"/>
 
     <EditText
         android:id="@+id/editTextMT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="25" />
+        android:inputType="number"
+        android:text="25"
+        android:textSize="24sp"
+        android:textColor="@color/blackColor"/>
 
     <TextView
         android:id="@+id/textSB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Short Break" />
+        android:text="Short Break"
+        android:textSize="18sp"
+        android:textColor="@color/blackColor"/>
 
     <EditText
         android:id="@+id/editTextSB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="5" />
+        android:inputType="number"
+        android:text="5"
+        android:textSize="24sp"
+        android:textColor="@color/blackColor"/>
 
     <TextView
         android:id="@+id/textLB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Long Break" />
+        android:text="Long Break"
+        android:textSize="18sp"
+        android:textColor="@color/blackColor"/>
 
     <EditText
         android:id="@+id/editTextLB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="15" />
+        android:inputType="number"
+        android:text="15"
+        android:textSize="24sp"
+        android:textColor="@color/blackColor"/>
 
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorControlHighlight"
+        android:elevation="0dp"
+        android:onClick="SaveSettings"
         android:text="Save"
-        android:onClick="SaveSettings"/>
+        android:textColor="@android:color/background_light" />
+
 
 </LinearLayout>
