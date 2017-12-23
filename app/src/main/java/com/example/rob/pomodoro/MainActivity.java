@@ -16,6 +16,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     static SettingsKlasa ustawienia = new SettingsKlasa();
+
+    Level level = new Level();
     int minutes=0;
     public int seconds = 0;
     String tekstRamka;
@@ -25,18 +27,13 @@ public class MainActivity extends AppCompatActivity {
     final int mainfinal = ustawienia.getMainTime();
     final int shortfinal = ustawienia.getShortBreak();
     final int longfinal = ustawienia.getLongBreak();
-    ImageView myImageView = (ImageView)findViewById(R.id.imageView);
-
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
+        final ImageView img = (ImageView)findViewById(R.id.imageView);
         final RelativeLayout currentLayout = (RelativeLayout) findViewById(R.id.main_layout);
         final ImageButton click = (ImageButton)findViewById(R.id.button);
         final ImageButton click2 = (ImageButton)findViewById(R.id.button2);
@@ -61,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
                             if(kolejka%2!=0 && kolejka%4!=0){
                                 minutes = mainfinal;
                                 currentLayout.setBackgroundColor(getResources().getColor(R.color.colorMain));
+                                level.addExp();
+                                level.levelUp();
+                                level.changeImage(img);
                             }
                             if(kolejka%2==0 && kolejka%4!=0){
                                 minutes = shortfinal;

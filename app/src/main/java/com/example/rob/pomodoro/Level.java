@@ -1,12 +1,13 @@
 package com.example.rob.pomodoro;
 
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 /**
  * Created by ROB on 12/21/2017.
  */
 
-public class Level {
+public class Level extends AppCompatActivity {
     private int level;
     private int exp;
     private int expLimit;
@@ -14,6 +15,7 @@ public class Level {
     Level(){
         level = 1;
         exp = level * 100;
+        expLimit = 1000;
     }
 
     public int getExp() {
