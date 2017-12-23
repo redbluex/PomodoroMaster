@@ -1,6 +1,8 @@
 package com.example.rob.pomodoro;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.CountDownTimer;
@@ -14,6 +16,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
 
     static SettingsKlasa ustawienia = new SettingsKlasa();
 
@@ -33,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPreferences = getSharedPreferences("com.example.rob.pomodoro", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        level.setLevel(sharedPreferences.getInt("LevelPoint", 1));
+        level.setExp(sharedPreferences.getInt("ExpPoint", 0));
+        level.setExpLimit(sharedPreferences.getInt("MaxExpPoint", 1000));
         final ImageView img = (ImageView)findViewById(R.id.imageView);
         final RelativeLayout currentLayout = (RelativeLayout) findViewById(R.id.main_layout);
         final ImageButton click = (ImageButton)findViewById(R.id.button);
@@ -43,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         setFont(label);
         setFont(minuty);
         setFont(colon);
+        level.changeImage(img);
 
         tekstRamka = ustawienia.getMainTime()+"";
         label.setText(tekstRamka);
@@ -61,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
                                 level.addExp();
                                 level.levelUp();
                                 level.changeImage(img);
+                                editor.putInt("LevelPoint", level.getLevel());
+                                editor.putInt("ExpPoint", level.getExp());
+                                editor.putInt("MaxExpPoint", level.getExpLimit());
+                                editor.commit();
                             }
                             if(kolejka%2==0 && kolejka%4!=0){
                                 minutes = shortfinal;
@@ -83,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
-
-
                     @Override
                     public void onFinish() {
                         label.setText("Koniec czasu");
@@ -104,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
     public void goToSettings(View v){
         Intent i = new Intent(MainActivity.this, Settings.class);

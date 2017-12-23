@@ -25,6 +25,9 @@ public class Level extends AppCompatActivity {
     public int getLevel() {
         return level;
     }
+    public int getExpLimit(){return expLimit;}
+
+    public void setExpLimit(int expLimit){this.expLimit=expLimit;}
 
     public void setExp(int exp) {
         this.exp = exp;
