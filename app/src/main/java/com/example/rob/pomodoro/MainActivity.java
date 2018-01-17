@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     String tekstRamka;
     private CountDownTimer yourCountDownTimer;
     private int kolejka=1;
-    private int maxKolejka = 10;
     final int mainfinal = ustawienia.getMainTime();
     final int shortfinal = ustawienia.getShortBreak();
     final int longfinal = ustawienia.getLongBreak();
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(final View v){
 
-                yourCountDownTimer = new CountDownTimer((ustawienia.getMainTime()*60000*maxKolejka), 1000){
+                yourCountDownTimer = new CountDownTimer(86400000, 1000){
                     public void onTick(long millisOnFinished){
                         if(minutes==0 && seconds==0){
                             if(kolejka%2!=0 && kolejka%4!=0){
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFinish() {
-                        label.setText("Koniec czasu");
+                        label.setText("You studied 24 hours. You need sleep.");
                     }
                 }.start();
                 click.setEnabled(false);
