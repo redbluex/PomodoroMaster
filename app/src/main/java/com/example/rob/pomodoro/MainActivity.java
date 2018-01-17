@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         final RelativeLayout currentLayout = (RelativeLayout) findViewById(R.id.main_layout);
         final ImageButton click = (ImageButton)findViewById(R.id.button);
         final ImageButton click2 = (ImageButton)findViewById(R.id.button2);
+        click2.setEnabled(false);
         final TextView label = (TextView)findViewById(R.id.timeText);
         final TextView minuty = (TextView)findViewById(R.id.textMinutes);
         TextView colon = (TextView) findViewById(R.id.textView4);
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }.start();
                 click.setEnabled(false);
+                click2.setEnabled(true);
             }
 
         });
