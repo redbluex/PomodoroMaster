@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView label = (TextView)findViewById(R.id.timeText);
         final TextView minuty = (TextView)findViewById(R.id.textMinutes);
         final TextView levelText = (TextView)findViewById(R.id.levelView);
+        final TextView statusText = (TextView)findViewById(R.id.textStatus);
         final ProgressBar progressBar = (ProgressBar)findViewById(R.id.determinateBar);
         procentProgress(progressBar);
         levelText.setText(String.valueOf(level.getLevel()));
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         setFont(label);
         setFont(minuty);
         setFont(colon);
+        setFont(statusText);
+
         level.changeImage(img);
 
         tekstRamka = ustawienia.getMainTime()+"";
@@ -75,9 +78,10 @@ public class MainActivity extends AppCompatActivity {
 
                     public void onTick(long millisOnFinished){
                         if(minutes==0 && seconds==0){
-                            if(kolejka%2!=0 && kolejka%4!=0){
+                            if(kolejka%2!=0 && kolejka%8!=0){
                                 minutes = mainfinal;
                                 currentLayout.setBackgroundColor(getResources().getColor(R.color.colorMain));
+                                statusText.setText("Focus");
                                 editor.putInt("LevelPoint", level.getLevel());
                                 editor.putInt("ExpPoint", level.getExp());
                                 editor.putInt("MaxExpPoint", level.getExpLimit());
@@ -85,9 +89,10 @@ public class MainActivity extends AppCompatActivity {
                                 editor.commit();
 
                             }
-                            if(kolejka%2==0 && kolejka%4!=0){
+                            if(kolejka%2==0 && kolejka%8!=0){
                                 minutes = shortfinal;
                                 currentLayout.setBackgroundColor(getResources().getColor(R.color.colorShort));
+                                statusText.setText("Short break");
                                 level.addExp();
                                 level.levelUp();
                                 levelText.setText(String.valueOf(level.getLevel()));
@@ -95,9 +100,10 @@ public class MainActivity extends AppCompatActivity {
                                 procentProgress(progressBar);
 
                             }
-                            if(kolejka%4==0){
+                            if(kolejka%8==0){
                                 minutes = longfinal;
                                 currentLayout.setBackgroundColor(getResources().getColor(R.color.colorLong));
+                                statusText.setText("Long break");
                                 level.addExp();
                                 level.levelUp();
                                 levelText.setText(String.valueOf(level.getLevel()));
