@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
+    static int x = 0;
 
     static SettingsKlasa ustawienia = new SettingsKlasa();
-
     Level level = new Level();
     int minutes=0;
     public int seconds = 0;
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         level.setLevel(sharedPreferences.getInt("LevelPoint", 1));
         level.setExp(sharedPreferences.getInt("ExpPoint", 0));
         level.setExpLimit(sharedPreferences.getInt("MaxExpPoint", 1000));
+        x = sharedPreferences.getInt("xPoint", 0);
         final ImageView img = (ImageView)findViewById(R.id.imageView);
         final RelativeLayout currentLayout = (RelativeLayout) findViewById(R.id.main_layout);
         final ImageButton click = (ImageButton)findViewById(R.id.button);
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView minuty = (TextView)findViewById(R.id.textMinutes);
         final TextView levelText = (TextView)findViewById(R.id.levelView);
         final ProgressBar progressBar = (ProgressBar)findViewById(R.id.determinateBar);
-        progressBar.setProgress(level.getExp()/level.getExpLimit());
+        procentProgress(progressBar);
         levelText.setText(String.valueOf(level.getLevel()));
         TextView colon = (TextView) findViewById(R.id.textView4);
         setFont(label);
@@ -71,28 +72,37 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(final View v){
 
                 yourCountDownTimer = new CountDownTimer(86400000, 1000){
+
                     public void onTick(long millisOnFinished){
                         if(minutes==0 && seconds==0){
                             if(kolejka%2!=0 && kolejka%4!=0){
                                 minutes = mainfinal;
                                 currentLayout.setBackgroundColor(getResources().getColor(R.color.colorMain));
-                                level.addExp();
-                                progressBar.setProgress(level.getExp()/level.getExpLimit());
-                                level.levelUp();
-                                levelText.setText(String.valueOf(level.getLevel()));
-                                level.changeImage(img);
                                 editor.putInt("LevelPoint", level.getLevel());
                                 editor.putInt("ExpPoint", level.getExp());
                                 editor.putInt("MaxExpPoint", level.getExpLimit());
+                                editor.putInt("xPoint", x);
                                 editor.commit();
+
                             }
                             if(kolejka%2==0 && kolejka%4!=0){
                                 minutes = shortfinal;
                                 currentLayout.setBackgroundColor(getResources().getColor(R.color.colorShort));
+                                level.addExp();
+                                level.levelUp();
+                                levelText.setText(String.valueOf(level.getLevel()));
+                                level.changeImage(img);
+                                procentProgress(progressBar);
+
                             }
                             if(kolejka%4==0){
                                 minutes = longfinal;
                                 currentLayout.setBackgroundColor(getResources().getColor(R.color.colorLong));
+                                level.addExp();
+                                level.levelUp();
+                                levelText.setText(String.valueOf(level.getLevel()));
+                                level.changeImage(img);
+                                procentProgress(progressBar);
                             }
                             kolejka++;
                         }
@@ -137,6 +147,16 @@ public class MainActivity extends AppCompatActivity {
     private void setFont(TextView myTextView){
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Munro.ttf");
         myTextView.setTypeface(typeface);
+    }
+
+    private void procentProgress(ProgressBar p){
+        if(level.getExp()==0){
+            x = 0;
+        }
+        if(level.getExp()!=0){
+            x = x+(10/level.getLevel());
+        }
+        p.setProgress(x);
     }
 
 

@@ -2,6 +2,7 @@ package com.example.rob.pomodoro;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 /**
  * Created by ROB on 12/21/2017.
@@ -14,7 +15,7 @@ public class Level extends AppCompatActivity {
 
     Level(){
         level = 1;
-        exp = level * 100;
+        exp = 100;
         expLimit = 1000;
     }
 
@@ -54,6 +55,7 @@ public class Level extends AppCompatActivity {
         exp+=100;
     }
 
+
     public void levelUp(){
         if(exp>expLimit){
             level+=1;
@@ -61,4 +63,6 @@ public class Level extends AppCompatActivity {
             expLimit=1000*level;
         }
     }
+
+
 }
