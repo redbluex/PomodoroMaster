@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     int minutes=0;
     public int seconds = 0;
     String tekstRamka;
+    String levelString;
     private CountDownTimer yourCountDownTimer;
     private int kolejka=1;
     final int mainfinal = ustawienia.getMainTime();
@@ -50,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
         click2.setEnabled(false);
         final TextView label = (TextView)findViewById(R.id.timeText);
         final TextView minuty = (TextView)findViewById(R.id.textMinutes);
+        final TextView levelText = (TextView)findViewById(R.id.levelView);
+        final ProgressBar progressBar = (ProgressBar)findViewById(R.id.determinateBar);
+        progressBar.setProgress(level.getExp()/level.getExpLimit());
+        levelText.setText(String.valueOf(level.getLevel()));
         TextView colon = (TextView) findViewById(R.id.textView4);
         setFont(label);
         setFont(minuty);
@@ -71,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
                                 minutes = mainfinal;
                                 currentLayout.setBackgroundColor(getResources().getColor(R.color.colorMain));
                                 level.addExp();
+                                progressBar.setProgress(level.getExp()/level.getExpLimit());
                                 level.levelUp();
+                                levelText.setText(String.valueOf(level.getLevel()));
                                 level.changeImage(img);
                                 editor.putInt("LevelPoint", level.getLevel());
                                 editor.putInt("ExpPoint", level.getExp());
@@ -101,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFinish() {
-                        label.setText("You studied 24 hours. You need sleep.");
+                        label.setText("You studied 24 hours. You need rest.");
                     }
                 }.start();
                 click.setEnabled(false);
