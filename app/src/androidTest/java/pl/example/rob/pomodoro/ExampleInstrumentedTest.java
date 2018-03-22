@@ -1,4 +1,4 @@
-package com.example.rob.pomodoro;
+package pl.example.rob.pomodoro;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

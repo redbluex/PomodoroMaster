@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_layout"
-    tools:context="com.example.rob.pomodoro.MainActivity"
+    tools:context="com.example.rob.pomodoro.pl.example.rob.pomodoro.MainActivity"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp"
     android:background="@color/colorMain"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.rob.pomodoro.Settings"
+    tools:context="com.example.rob.pomodoro.pl.example.rob.pomodoro.Settings"
     android:orientation="vertical"
     android:background="@color/colorMain"
     >
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        android:text="15"
+        android:text="20"
         android:textSize="24sp"
         android:textColor="@color/blackColor"/>
 

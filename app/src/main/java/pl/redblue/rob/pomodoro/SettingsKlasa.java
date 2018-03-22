@@ -1,4 +1,4 @@
-package com.example.rob.pomodoro;
+package pl.redblue.rob.pomodoro;
 
 /**
  * Created by ROB on 12/14/2017.
@@ -13,7 +13,7 @@ public class SettingsKlasa {
     SettingsKlasa(){
         mainTime = 25;
         shortBreak = 5;
-        longBreak = 15;
+        longBreak = 20;
     }
 
     public int getShortBreak() {

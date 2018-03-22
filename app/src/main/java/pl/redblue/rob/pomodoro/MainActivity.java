@@ -1,15 +1,13 @@
-package com.example.rob.pomodoro;
+package pl.redblue.rob.pomodoro;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -39,26 +37,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(pl.redblue.rob.pomodoro.R.layout.activity_main);
         sharedPreferences = getSharedPreferences("com.example.rob.pomodoro", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         level.setLevel(sharedPreferences.getInt("LevelPoint", 1));
         level.setExp(sharedPreferences.getInt("ExpPoint", 0));
         level.setExpLimit(sharedPreferences.getInt("MaxExpPoint", 1000));
         x = sharedPreferences.getInt("xPoint", 0);
-        final ImageView img = (ImageView)findViewById(R.id.imageView);
-        final RelativeLayout currentLayout = (RelativeLayout) findViewById(R.id.main_layout);
-        final ImageButton click = (ImageButton)findViewById(R.id.button);
-        final ImageButton click2 = (ImageButton)findViewById(R.id.button2);
+        final ImageView img = (ImageView)findViewById(pl.redblue.rob.pomodoro.R.id.imageView);
+        final RelativeLayout currentLayout = (RelativeLayout) findViewById(pl.redblue.rob.pomodoro.R.id.main_layout);
+        final ImageButton click = (ImageButton)findViewById(pl.redblue.rob.pomodoro.R.id.button);
+        final ImageButton click2 = (ImageButton)findViewById(pl.redblue.rob.pomodoro.R.id.button2);
         click2.setEnabled(false);
-        final TextView label = (TextView)findViewById(R.id.timeText);
-        final TextView minuty = (TextView)findViewById(R.id.textMinutes);
-        final TextView levelText = (TextView)findViewById(R.id.levelView);
-        final TextView statusText = (TextView)findViewById(R.id.textStatus);
-        final ProgressBar progressBar = (ProgressBar)findViewById(R.id.determinateBar);
+        final TextView label = (TextView)findViewById(pl.redblue.rob.pomodoro.R.id.timeText);
+        final TextView minuty = (TextView)findViewById(pl.redblue.rob.pomodoro.R.id.textMinutes);
+        final TextView levelText = (TextView)findViewById(pl.redblue.rob.pomodoro.R.id.levelView);
+        final TextView statusText = (TextView)findViewById(pl.redblue.rob.pomodoro.R.id.textStatus);
+        final ProgressBar progressBar = (ProgressBar)findViewById(pl.redblue.rob.pomodoro.R.id.determinateBar);
         procentProgress(progressBar);
         levelText.setText(String.valueOf(level.getLevel()));
-        TextView colon = (TextView) findViewById(R.id.textView4);
+        TextView colon = (TextView) findViewById(pl.redblue.rob.pomodoro.R.id.textView4);
         setFont(label);
         setFont(minuty);
         setFont(colon);
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         if(minutes==0 && seconds==0){
                             if(kolejka%2!=0 && kolejka%8!=0){
                                 minutes = mainfinal;
-                                currentLayout.setBackgroundColor(getResources().getColor(R.color.colorMain));
+                                currentLayout.setBackgroundColor(getResources().getColor(pl.redblue.rob.pomodoro.R.color.colorMain));
                                 statusText.setText("Focus");
                                 editor.putInt("LevelPoint", level.getLevel());
                                 editor.putInt("ExpPoint", level.getExp());
@@ -91,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             if(kolejka%2==0 && kolejka%8!=0){
                                 minutes = shortfinal;
-                                currentLayout.setBackgroundColor(getResources().getColor(R.color.colorShort));
+                                currentLayout.setBackgroundColor(getResources().getColor(pl.redblue.rob.pomodoro.R.color.colorShort));
                                 statusText.setText("Short break");
                                 level.addExp();
                                 level.levelUp();
@@ -102,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             if(kolejka%8==0){
                                 minutes = longfinal;
-                                currentLayout.setBackgroundColor(getResources().getColor(R.color.colorLong));
+                                currentLayout.setBackgroundColor(getResources().getColor(pl.redblue.rob.pomodoro.R.color.colorLong));
                                 statusText.setText("Long break");
                                 level.addExp();
                                 level.levelUp();

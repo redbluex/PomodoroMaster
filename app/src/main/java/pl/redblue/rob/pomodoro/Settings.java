@@ -1,18 +1,16 @@
-package com.example.rob.pomodoro;
+package pl.redblue.rob.pomodoro;
 
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.example.rob.pomodoro.MainActivity.ustawienia;
-import static java.sql.Types.NULL;
+import static pl.redblue.rob.pomodoro.MainActivity.ustawienia;
 
 public class Settings extends AppCompatActivity {
 
@@ -21,20 +19,20 @@ public class Settings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-        EditText a = (EditText)findViewById(R.id.editTextMT);
+        setContentView(pl.redblue.rob.pomodoro.R.layout.activity_settings);
+        EditText a = (EditText)findViewById(pl.redblue.rob.pomodoro.R.id.editTextMT);
         setFont(a);
-        EditText b = (EditText)findViewById(R.id.editTextSB);
+        EditText b = (EditText)findViewById(pl.redblue.rob.pomodoro.R.id.editTextSB);
         setFont(b);
-        EditText c = (EditText)findViewById(R.id.editTextLB);
+        EditText c = (EditText)findViewById(pl.redblue.rob.pomodoro.R.id.editTextLB);
         setFont(c);
-        TextView x = (TextView)findViewById(R.id.textMT);
+        TextView x = (TextView)findViewById(pl.redblue.rob.pomodoro.R.id.textMT);
         setFont(x);
-        TextView y = (TextView)findViewById(R.id.textSB);
+        TextView y = (TextView)findViewById(pl.redblue.rob.pomodoro.R.id.textSB);
         setFont(y);
-        TextView z = (TextView)findViewById(R.id.textLB);
+        TextView z = (TextView)findViewById(pl.redblue.rob.pomodoro.R.id.textLB);
         setFont(z);
-        Button k = (Button)findViewById(R.id.buttonSave);
+        Button k = (Button)findViewById(pl.redblue.rob.pomodoro.R.id.buttonSave);
         setFont(k);
 
 
@@ -43,9 +41,9 @@ public class Settings extends AppCompatActivity {
 
     public void SaveSettings(View v){
         int x,y,z;
-        EditText tekstMT = (EditText)findViewById(R.id.editTextMT);
-        EditText tekstSB = (EditText)findViewById(R.id.editTextSB);
-        EditText tekstLB = (EditText)findViewById(R.id.editTextLB);
+        EditText tekstMT = (EditText)findViewById(pl.redblue.rob.pomodoro.R.id.editTextMT);
+        EditText tekstSB = (EditText)findViewById(pl.redblue.rob.pomodoro.R.id.editTextSB);
+        EditText tekstLB = (EditText)findViewById(pl.redblue.rob.pomodoro.R.id.editTextLB);
 
         try{
             x = Integer.parseInt(tekstMT.getText().toString());

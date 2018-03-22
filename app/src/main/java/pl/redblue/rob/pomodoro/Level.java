@@ -1,8 +1,7 @@
-package com.example.rob.pomodoro;
+package pl.redblue.rob.pomodoro;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 /**
  * Created by ROB on 12/21/2017.
@@ -40,13 +39,13 @@ public class Level extends AppCompatActivity {
 
     public void changeImage(ImageView img){
         switch (level){
-            case 1: img.setImageResource(R.drawable.littlepomidorbig);
+            case 1: img.setImageResource(pl.redblue.rob.pomodoro.R.drawable.littlepomidorbig);
                 break;
-            case 2: img.setImageResource(R.drawable.midpomidorbig);
+            case 2: img.setImageResource(pl.redblue.rob.pomodoro.R.drawable.midpomidorbig);
                 break;
-            case 3: img.setImageResource(R.drawable.midpluspomidorbig);
+            case 3: img.setImageResource(pl.redblue.rob.pomodoro.R.drawable.midpluspomidorbig);
                 break;
-            case 4: img.setImageResource(R.drawable.littlepomidorbig);
+            case 4: img.setImageResource(pl.redblue.rob.pomodoro.R.drawable.littlepomidorbig);
 
         }
     }
